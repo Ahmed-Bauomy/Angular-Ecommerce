@@ -1,0 +1,39 @@
+<div class="text-center">
+    <div [ngClass]="{loadingClass:Loading}" ></div>
+    <div class="form-group">
+        <label class="titleStyle">product Name</label>
+        <div>
+            {{product.Name}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="titleStyle">product Image</label>
+        <div>
+            <img [src]="product.Image" alt="image" width="300" height="300" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="titleStyle">product details</label>
+        <div>
+            {{product.Details}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="titleStyle">product price</label>
+        <div>
+            {{product.Price}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="titleStyle">product Quantity</label>
+        <div>
+            {{product.Quantity}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="titleStyle">product Category</label>
+        <div>
+            {{product.Category.Name}}
+        </div>
+    </div>
+</div>

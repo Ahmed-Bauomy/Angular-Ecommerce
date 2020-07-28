@@ -1,0 +1,18 @@
+<a class="btn btn-primary " routerLink="/AddProduct">Add product</a>
+<div class="row " style="justify-content: space-around;">
+  <div [ngClass]="{loadingClass:Loading}" ></div>
+<div class="card col-12 col-md-4 col-lg-3 m-1" *ngFor="let item of this.getFilteredProducts()">
+  <div class="card-header text-center" style="height: 40vh;" >
+    <img [src]="item.Image" width="100%" height="100%" alt="{{item.Name}}"/>
+  </div>
+  <div class="card-body text-center">
+    {{item.Name}}
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary" (click)="AddToCart(item)">add to cart</button> |
+    <a class="btn btn-success mt-1" [routerLink]="['/ProductDetails',item.Id]" >Details</a> |
+    <a class="btn btn-warning" [routerLink]="['/EditProduct',item.Id]">Edit</a> |
+    <a class="btn btn-danger mt-1" [routerLink]="['/RemoveProduct',item.Id]">Remove</a> 
+  </div>
+</div>
+</div>

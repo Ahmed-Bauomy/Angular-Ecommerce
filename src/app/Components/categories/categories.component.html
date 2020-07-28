@@ -1,0 +1,9 @@
+<h3>Choose Category</h3>
+<select class="form-control mt-3 mb-3" [(ngModel)]="CategoryId" >
+  <option *ngFor="let item of Categories" [value]="item.Id" [selected]="item.Id==1">
+   {{item.Name}}
+  </option>
+</select>
+
+
+<app-products [catId]="CategoryId"></app-products>

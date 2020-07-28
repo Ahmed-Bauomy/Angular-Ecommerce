@@ -1,0 +1,73 @@
+<h2>Register New Product</h2>
+<form (ngSubmit)="CreateNewProduct()" class="container" #formRef="ngForm">
+    <div [ngClass]="{loadingClass:Loading}" ></div>
+    <div class="form-group">
+        <label id="PName">product Name</label>
+        <input [class.is-valid]="ProductName.valid" 
+               [class.is-invalid]="ProductName.invalid && ProductName.touched" 
+               required minlength="4" maxlength="20" pattern="[a-zA-Z ._%+-]*"
+               #ProductName="ngModel" 
+               id="PName" class="form-control" type="text" name="PName" [(ngModel)]="Product.Name" />
+    </div>
+    <div class="alert alert-danger" [hidden]="ProductName.valid || ProductName.untouched">
+        name should be more than 4 letters and less than 20 letters and starts with Letter
+    </div>
+    <div class="form-group">
+        <label id="PDetails">Product Details</label>
+        <input [class.is-valid]="ProductDetails.valid" 
+               [class.is-invalid]="ProductDetails.invalid && ProductDetails.touched" 
+               required minlength="4" maxlength="50" 
+               #ProductDetails="ngModel" 
+               id="PDetails" class="form-control" type="text" name="PDetails" [(ngModel)]="Product.Details" />
+    </div>
+    <div class="alert alert-danger" [hidden]="ProductDetails.valid || ProductDetails.untouched">
+        Details should be more than 4 letters and less than 50 letters and starts with Letter
+    </div>
+    <div class="form-group">
+        <label id="PImage">Product Image</label>
+        <input [class.is-valid]="ProductImage.valid" 
+              [class.is-invalid]="ProductImage.invalid && ProductImage.touched" 
+               required  
+              #ProductImage="ngModel"
+              id="PImage" class="form-control" type="text" name="PImage" [(ngModel)]="Product.Image" />
+    </div>
+    <div class="alert alert-danger" [hidden]="ProductImage.valid || ProductImage.untouched">
+        Image is required
+    </div>
+    <div class="form-group">
+        <label id="PPrice">Product Price</label>
+        <input  [class.is-valid]="ProductPrice.valid" 
+               [class.is-invalid]="ProductPrice.invalid && ProductPrice.touched" 
+                required min="1" 
+               #ProductPrice="ngModel" 
+        id="PPrice" class="form-control" type="text" name="PPrice" [(ngModel)]="Product.Price" />
+    </div>
+    <div class="alert alert-danger" [hidden]="ProductPrice.valid || ProductPrice.untouched">
+        Price is required min 1 number
+    </div>
+    <div class="form-group">
+        <label id="PQuantity">Product Quantity</label>
+        <input  [class.is-valid]="ProductQuantity.valid" 
+                [class.is-invalid]="ProductQuantity.invalid && ProductQuantity.touched" 
+                required min="1" 
+                #ProductQuantity="ngModel" 
+             id="PQuantity" class="form-control" type="text" name="PQuantity" [(ngModel)]="Product.OriginalQuantity" />
+    </div>
+    <div class="alert alert-danger" [hidden]="ProductQuantity.valid || ProductQuantity.untouched">
+        Quantity is required min 1 number
+    </div>
+    <div class="form-group">
+        <label id="PProduct">Product category</label>
+        <select id="PProduct" class="form-control" type="text" name="PProduct" [(ngModel)]="Product.CategoryId" >
+            <option *ngFor="let item of CategoryList" [value]="item.Id">
+               {{item.Name}}
+            </option>
+        </select>
+    </div>
+     <div >
+         <ul *ngFor="let error of ModelState" class="alert alert-danger list-unstyled">
+             <li>{{error}}</li>
+         </ul>
+     </div>
+    <input type="submit" class="btn btn-primary" [disabled]="formRef.invalid" />
+</form>

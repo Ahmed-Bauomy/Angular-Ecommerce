@@ -1,0 +1,18 @@
+<h2>Login</h2>
+<form (ngSubmit)="Login()" class="container">
+    <div [ngClass]="{loadingClass:Loading}" ></div>
+    <div class="form-group">
+     <label id="userName">User Name</label>
+     <input type="text" class="form-control" id="userName" [(ngModel)]="UserName" name="Username" />
+    </div>
+
+    <div class="form-group">
+        <label id="password">Password</label>
+        <input type="password" class="form-control"  id="password" [(ngModel)]="Password" name="Password" />
+     </div>
+      <div class="text-danger">{{ErrorMessage}}</div>
+     <input type="submit" class="btn btn-primary" />
+
+</form>
+
+

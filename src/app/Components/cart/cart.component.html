@@ -1,0 +1,29 @@
+<h3>List of Products</h3>
+<table class="container table table-bordered table-hover " >
+  <thead>
+  <th>number</th>
+  <th>Product Name</th>
+  <th>Product Quantity</th>
+  <th>product price</th>
+  <th>Operations</th>
+  </thead>
+  <tbody>
+      <tr *ngFor="let item of _productService.getCart().Items;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{item.product.Name}}</td>
+          <td>{{item.Quantity}}</td>
+          <td>{{item.product.Price}}</td>
+          <td>
+              <button class="btn btn-danger" (click)="RemoveFromCart(item)" >Remove From Cart</button>
+          </td>
+      </tr>
+  </tbody>
+  <tfoot>
+      <tr>
+          <td colspan="3" class="text-center">Total Price</td>
+          <td colspan="2" >{{Cart.TotalPrice}}</td>
+      </tr>
+  </tfoot>
+</table>
+<button class="btn btn-success" >Check out</button>
+<ngx-paypal [config]="payPalConfig" style="text-align: center;" class="col-6"></ngx-paypal>

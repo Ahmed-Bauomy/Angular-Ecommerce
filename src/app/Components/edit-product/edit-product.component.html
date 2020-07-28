@@ -1,0 +1,60 @@
+<h2>Edit Product</h2>
+<form (ngSubmit)="EditProduct()" class="container" [formGroup]="UpdateForm">
+    <div [ngClass]="{loadingClass:Loading}" ></div>
+    <input type="hidden" [(ngModel)]="Product.Id" name="PId" />
+
+    <div class="form-group">
+        <label id="PName">product Name</label>
+        <input formControlName="PName" id="PName" class="form-control" type="text" name="PName" [(ngModel)]="Product.Name" />
+    </div>
+    <div class="alert alert-danger" [hidden]="UpdateForm.controls['PName'].valid || UpdateForm.controls['PName'].untouched">
+        name should be more than 4 letters and starts with Letter
+    </div>
+
+    <div class="form-group">
+        <label id="PDetails">Product Details</label>
+        <input formControlName="PDetails" id="PDetails" class="form-control" type="text" name="PDetails" [(ngModel)]="Product.Details" />
+    </div>
+    <div class="alert alert-danger" [hidden]="UpdateForm.controls['PDetails'].valid || UpdateForm.controls['PDetails'].untouched">
+       Is Required
+    </div>
+
+    <div class="form-group">
+        <label id="PImage">Product Image</label>
+        <input formControlName="PImage" id="PImage" class="form-control" type="text" name="PImage" [(ngModel)]="Product.Image" />
+    </div>
+    <div class="alert alert-danger" [hidden]="UpdateForm.controls['PImage'].valid || UpdateForm.controls['PImage'].untouched">
+        Is Required
+     </div>
+
+    <div class="form-group">
+        <label id="PPrice">Product Price</label>
+        <input formControlName="PPrice" id="PPrice" class="form-control" type="text" name="PPrice" [(ngModel)]="Product.Price" />
+    </div>
+    <div class="alert alert-danger" [hidden]="UpdateForm.controls['PPrice'].valid || UpdateForm.controls['PPrice'].untouched">
+        Is Required
+     </div>
+
+    <div class="form-group">
+        <label id="PQuantity">Product Quantity</label>
+        <input formControlName="PQuantity" id="PQuantity" class="form-control" type="text" name="PQuantity" [(ngModel)]="Product.OriginalQuantity" />
+    </div>
+    <div class="alert alert-danger" [hidden]="UpdateForm.controls['PQuantity'].valid || UpdateForm.controls['PQuantity'].untouched">
+        Is Required
+     </div>
+
+    <div class="form-group">
+        <label id="PProduct">Product category</label>
+        <select id="PProduct" class="form-control" type="text" name="PProduct" [(ngModel)]="Product.Category.Id" >
+            <option *ngFor="let item of CategoryList" [value]="item.Id" >
+               {{item.Name}}
+            </option>
+        </select>
+    </div>
+     <div >
+         <ul *ngFor="let error of ModelState" class="alert alert-danger list-unstyled">
+             <li>{{error}}</li>
+         </ul>
+     </div>
+    <input type="submit" class="btn btn-primary" [disabled]="UpdateForm.invalid " />
+</form>

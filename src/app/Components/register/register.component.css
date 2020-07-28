@@ -1,0 +1,11 @@
+.loadingClass{
+    height: 80vh;
+    width: 97vw;
+    position: fixed;
+    z-index: 998;
+    background-image: url(/assets/loadingImageO.gif);
+    background-size:300px 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .9;
+}
